@@ -1,13 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@400;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color-bg: #1c1a23;
+  --color-hover: #2f2b3b;
+  --color-green: #4ef59d;
+  --color-yellow: #ffcc70;
+  --color-red: #fb4d8d;
+  --color-red-dark: #c5396d;
+  --color-violet: #756c93;
+  --color-text: #dddce3;
+  --color-text-light: #a8a3ba;
+  --color-dark: #030203;
+
+  --shadow-card: 6px 6px 15px rgba(0, 0, 0, 0.3),
+    -5px -5px 12px rgba(117, 108, 147, 0.1);
+
+  --font-family: "Almarai", "Segoe UI", sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  direction: rtl;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #b8c1ee 0%,
+    #f0b9ec 46%,
+    #fdefd3 100%
+  );
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  width: 100vw;
+  overflow: hidden;
+}
+header h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 1.5rem auto 2rem auto;
+  font-weight: 300;
+  color: var(--color-bg);
+}
+main {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  height: 70vh;
+  width: 50vw;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-card);
+  border-top: 1px solid var(--color-red);
+  border-bottom: 1px solid var(--color-dark);
+  border-radius: 7px;
+  overflow-y: scroll;
+  margin-bottom: 3rem;
+}
+.container::-webkit-scrollbar {
+  width:5px;
+}
+.container::-webkit-scrollbar-track {
+  -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius:5px;
+}
+.container::-webkit-scrollbar-thumb {
+  border-radius:5px;
+  -webkit-box-shadow: inset 0 0 6px var(--color-red); 
+}
+
+@media (max-width: 850px) {
+  .container {
+    width: 75vw;
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    width: 90vw;
+  }
+}
+.todos-form .form-icon {
+  margin-left: 1.5rem;
+  cursor: pointer;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease-in-out;;
+}
+.todos-form .form-icon.active {
+  color: var(--color-green);
+}
+.todos-form {
+  background-color: var(--color-hover);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+.todos-form input{
+  flex: 1;
+  width: 100%;
+  height: 3rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-bg);
+  border: none;
+  outline: none;
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-family: var(--font-family);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+.btn{
+  min-height: 3rem;
+  font-size: 1.25rem;
+  font-family: inherit;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--color-red);
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+}
+.btn:hover{
+  background-color: var(--color-red-dark);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.btn:active{
+  box-shadow: none;
+}
+.btn:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+}
+.no-todos-text {
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+.todos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bg);
+  padding: 2rem 2rem;
+  transition: all .3s;
+}
+
+.todos:hover {
+  background-color: var(--color-hover);
+}
+.todos-todo_icon {
+  margin-left: 1rem;
+}
+.todos-todo_icon:hover{
+  cursor: pointer;
+}
+.todos-text_done{
+  text-decoration: line-through;
+  color: var(--color-text-light);
+}
+.todos-done .todos-todo_icon{
+  color: var(--color-green);
+}
+.todos .todos-todo_cta {
+  display: flex;
+  margin-right: auto;
+  gap: 1rem;
+}
+.todos-todo_cta > div {
+  opacity: 0;
+  transition: all .3s;
+}
+.todos:hover .todos-todo_cta > div {
+  opacity: 1;
+}
+.todos-todo_cta-edit{
+  color: var(--color-yellow);
+}
+.todos-todo_cta-delete {
+  color: var(--color-red-dark);
+}
+.todos-todo_cta-edit:hover,
+.todos-todo_cta-delete:hover{
+  cursor: pointer;
 }
